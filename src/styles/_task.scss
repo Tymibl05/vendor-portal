@@ -1,0 +1,35 @@
+#Task {
+  .info {
+    display: flex;
+    gap: 1em;
+
+    button {
+      border-radius: 50%;
+      transition: transform ease 0.5s;
+      margin-right: 1em;
+    }
+  }
+  .employees {
+    display: none;
+    .emp {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .buttons {
+        button {
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+
+  .toggle {
+    .info button {
+      transform: rotate(180deg);
+    }
+    .employees {
+      display: block;
+    }
+  }
+}

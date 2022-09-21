@@ -1,0 +1,21 @@
+#SignIn {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    min-height: 50vh;
+
+    form {
+      display: grid;
+      gap: 1em;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25em;
+      }
+    }
+  }
+}

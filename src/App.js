@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './styles/App.scss';
+import { SignIn } from './pages/SignIn';
+import { Portal } from './pages/Portal';
+import { StoreProvider } from './Store';
+import { useAuth } from './contexts/AuthContext';
+import { TasksProvider } from './contexts/TasksContext';
 
 function App() {
+  // const [isLogIn, setLogIn] = useState(false);
+  const { currentUser } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      {!currentUser ? (
+        <SignIn />
+      ) : (
+        <StoreProvider>
+          <Portal />
+        </StoreProvider>
+      )}
+      <TasksProvider></TasksProvider>
     </div>
   );
+  // TasksContext to replace Store
 }
 
 export default App;

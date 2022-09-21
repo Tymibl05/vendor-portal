@@ -1,0 +1,15 @@
+#Portal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .filter {
+    display: flex;
+    gap: 1em;
+  }
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+  }
+}
