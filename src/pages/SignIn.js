@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
 export const SignIn = () => {
@@ -11,7 +11,6 @@ export const SignIn = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    // verification logic
     signin(form.email, form.password);
   };
 

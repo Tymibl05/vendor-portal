@@ -16,7 +16,8 @@ export const Task = ({ task }) => {
           </p>
           <p className="desc">{task.description}</p>
           <p className="timeframe">
-            {task.startDate} {task.startTime} - {task.endTime}
+            {task.timeframe.startDate} {task.timeframe.startTime} -{' '}
+            {task.timeframe.endTime}
           </p>
         </div>
         <ul className="employees">

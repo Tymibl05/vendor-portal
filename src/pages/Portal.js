@@ -1,21 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Task } from '../components/Task';
-import { Store } from '../Store';
 import { useAuth } from '../contexts/AuthContext';
+import { useTasks } from '../contexts/TasksContext';
 
 export const Portal = () => {
   const { currentUser } = useAuth();
-  const { state, dispatch } = useContext(Store);
-  const [tasks, setTasks] = useState([]);
-  // only pass the specified company's tasks
-
-  useEffect(() => {
-    (async () => {
-      await setTasks(state.Dell.tasks.active);
-      // await setTasks(state.Dell.tasks + `.${filter}`);
-      // await setTasks(dispatch({ type: 'GET_TASKS' }));
-    })();
-  }, [tasks]);
+  const { companyInfo } = useTasks();
+  console.log(currentUser.uid);
 
   const [filter, setFilter] = useState('active');
   // use filter state to call the correct task group from context.
@@ -25,7 +16,7 @@ export const Portal = () => {
     <div id="Portal">
       <div>
         <h1>
-          Vendor Portal | <span>{currentUser.email}</span>
+          Vendor Portal | <span>{companyInfo.name}</span>
         </h1>
 
         <div className="tasks">
@@ -39,7 +30,9 @@ export const Portal = () => {
             <p>Description</p>
             <p>Timeframe</p>
           </div>
-          {tasks && tasks.map((task) => <Task task={task} key={task.id} />)}
+          {companyInfo.tasks.map((task) => (
+            <Task task={task} key={task.id} />
+          ))}
         </div>
       </div>
     </div>

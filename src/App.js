@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles/App.scss';
 import { SignIn } from './pages/SignIn';
 import { Portal } from './pages/Portal';
-import { StoreProvider } from './Store';
 import { useAuth } from './contexts/AuthContext';
 import { TasksProvider } from './contexts/TasksContext';
 
 function App() {
-  // const [isLogIn, setLogIn] = useState(false);
   const { currentUser } = useAuth();
 
   return (
@@ -15,14 +13,12 @@ function App() {
       {!currentUser ? (
         <SignIn />
       ) : (
-        <StoreProvider>
+        <TasksProvider>
           <Portal />
-        </StoreProvider>
+        </TasksProvider>
       )}
-      <TasksProvider></TasksProvider>
     </div>
   );
-  // TasksContext to replace Store
 }
 
 export default App;
