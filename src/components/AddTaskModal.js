@@ -7,7 +7,7 @@ export const AddTaskModal = () => {
   const [formInput, setFormInput] = useState({
     id: 2,
     description: '',
-    multiDay: '',
+    multiDay: false,
     timeframe: {
       startDate: '',
       endDate: '',
@@ -25,7 +25,6 @@ export const AddTaskModal = () => {
 
   const handleAddTask = (e) => {
     e.preventDefault();
-    console.log(formInput.multiDay);
     addTask(formInput);
   };
 
@@ -44,6 +43,15 @@ export const AddTaskModal = () => {
             />
           </div>
           <div>
+            <input
+              type="checkbox"
+              onChange={(e) =>
+                setFormInput({ ...formInput, multiDay: !formInput.multiDay })
+              }
+            />
+            <label htmlFor="">Multiple days?</label>
+          </div>
+          <div>
             <label htmlFor="">Start date:</label>
             <input
               type="date"
@@ -58,6 +66,23 @@ export const AddTaskModal = () => {
               }
             />
           </div>
+          {formInput.multiDay && (
+            <div>
+              <label htmlFor="">End date:</label>
+              <input
+                type="date"
+                onChange={(e) =>
+                  setFormInput({
+                    ...formInput,
+                    timeframe: {
+                      ...formInput.timeframe,
+                      endDate: e.target.value,
+                    },
+                  })
+                }
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="">Start time:</label>
             <input
@@ -87,16 +112,6 @@ export const AddTaskModal = () => {
                 })
               }
             />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              value={true}
-              onChange={(e) =>
-                setFormInput({ ...formInput, multiDay: e.target.value })
-              }
-            />
-            <label htmlFor="">Multiple days?</label>
           </div>
           <div>
             <label htmlFor="">Employees</label>

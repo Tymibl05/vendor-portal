@@ -39,16 +39,6 @@ export const TasksProvider = ({ children }) => {
 
   const addTask = async (taskInfo) => {
     const docRef = doc(collection(db, 'companies'), 'dell');
-    console.log(taskInfo);
-    // await updateDoc(docRef, {
-    //   tasks: arrayUnion({
-    //     id: taskInfo.id,
-    //     description: taskInfo.description,
-    //     requested: '11/11/11 11:11:11',
-    //     timeframe: taskInfo.timeframe,
-    //     employees: taskInfo.employees,
-    //   }),
-    // });
     await updateDoc(docRef, {
       tasks: arrayUnion(taskInfo),
     });

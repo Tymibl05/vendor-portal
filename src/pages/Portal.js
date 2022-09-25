@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Task } from '../components/Task';
 import { useTasks } from '../contexts/TasksContext';
+import { Task } from '../components/Task';
 
 export const Portal = () => {
   const { vendorInfo } = useTasks();
@@ -13,7 +13,9 @@ export const Portal = () => {
     <div id="Portal">
       <div>
         <nav>
-          <h1>{/* Vendor Portal | <span>{vendorInfo.name}</span> */}</h1>
+          <h1>
+            Vendor Portal | <span>{vendorInfo.name}</span>
+          </h1>
           <button>add task</button>
         </nav>
 
