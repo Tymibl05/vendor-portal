@@ -1,0 +1,16 @@
+#AddTaskModal {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    div {
+      display: flex;
+      gap: 1em;
+    }
+
+    button {
+      max-width: 80px;
+    }
+  }
+}

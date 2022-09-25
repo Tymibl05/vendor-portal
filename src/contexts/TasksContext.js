@@ -1,6 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { db } from '../firebase';
+import { useAuth } from './AuthContext';
 
 const TasksCotnext = createContext();
 export const useTasks = () => {
@@ -8,59 +15,55 @@ export const useTasks = () => {
 };
 
 export const TasksProvider = ({ children }) => {
-  const [companyInfo, setCompanyInfo] = useState({
+  const { currentUser } = useAuth();
+
+  const [vendorInfo, setVendorInfo] = useState({
     tasks: [],
     employees: [],
   });
 
   useEffect(() => {
-    getCompanyInfo();
+    getVendorInfo();
   }, []);
 
-  const getCompanyInfo = async () => {
-    const employees = await getDoc(doc(collection(db, 'companies'), 'dell'));
-    setCompanyInfo(employees.data());
+  const getVendorInfo = async () => {
+    const vendor = await getDoc(
+      doc(collection(db, 'vendors'), `${currentUser.uid}`)
+    );
+    setVendorInfo(vendor.data());
   };
 
   const getTaskInfo = async (taskID) => {
-    const testRef = doc(db, 'dell', 'tasks', 'active', 'testTask');
-    const testSnap = await getDoc(testRef);
-    console.log(testSnap.data());
+    // return task / taskInfo
+  }; // for single task details page
+
+  const addTask = async (taskInfo) => {
+    const docRef = doc(collection(db, 'companies'), 'dell');
+    console.log(taskInfo);
+    // await updateDoc(docRef, {
+    //   tasks: arrayUnion({
+    //     id: taskInfo.id,
+    //     description: taskInfo.description,
+    //     requested: '11/11/11 11:11:11',
+    //     timeframe: taskInfo.timeframe,
+    //     employees: taskInfo.employees,
+    //   }),
+    // });
+    await updateDoc(docRef, {
+      tasks: arrayUnion(taskInfo),
+    });
   };
 
-  const testTasksContext = async () => {
-    // try {
-    //   const docRef = await addDoc(collection(db, 'users'), {
-    //     first: ' Another Test',
-    //     last: 'Lovelace',
-    //     born: 1815,
-    //   });
-    //   console.log('Document written with ID: ', docRef.id);
-    // } catch (e) {
-    //   console.error('Error adding document: ', e);
-    // }
-    // const usersRef = doc(db, 'users', 'wye0w9rkFajY6IxdfJm0');
-    // const usersSnap = await getDoc(usersRef);
-    // console.log(usersSnap.data());
-    // const tasksCol = collection(db, 'dell', 'tasks', 'active');
-    // const taskRef = doc(tasksCol, 'testTask');
-    // const taskSnap = await getDoc(taskRef);
-    // console.log(taskSnap.data());
-    // const tasksSnap = await getDoc(tasksRef);
-    // console.log(tasksSnap.data());
-    // const querySnapshot = await getDocs(collection(db, 'companies'));
-    // querySnapshot.forEach((doc) => {
-    //   console.log(doc.id, ' => ', doc.data());
-    // });
-  };
+  const filterTasks = () => {};
 
   const value = {
-    companyInfo,
+    vendorInfo,
+    addTask,
   };
   return (
     <TasksCotnext.Provider value={value}>
       {children}
-      <button onClick={getCompanyInfo}>Tasks Context Test</button>
+      <button>Tasks Context Test</button>
     </TasksCotnext.Provider>
   );
 };

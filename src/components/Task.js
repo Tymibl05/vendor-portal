@@ -24,8 +24,8 @@ export const Task = ({ task }) => {
           {task.employees.map((emp) => (
             <li className="emp" key={emp.name}>
               <p className="name">{emp.name}</p>
-              <p className="inTime">in: {emp.timeIn}</p>
-              <p className="outTime">out: {emp.timeOut}</p>
+              <p className="inTime">in: </p>
+              <p className="outTime">out:</p>
               <div className="buttons">
                 <button onClick={(e) => checkHandler(e, 'IN')}>Check in</button>
                 <button onClick={(e) => checkHandler(e, 'OUT')}>

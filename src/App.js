@@ -4,6 +4,7 @@ import { SignIn } from './pages/SignIn';
 import { Portal } from './pages/Portal';
 import { useAuth } from './contexts/AuthContext';
 import { TasksProvider } from './contexts/TasksContext';
+import { AddTaskModal } from './components/AddTaskModal';
 
 function App() {
   const { currentUser } = useAuth();
@@ -14,6 +15,7 @@ function App() {
         <SignIn />
       ) : (
         <TasksProvider>
+          <AddTaskModal />
           <Portal />
         </TasksProvider>
       )}

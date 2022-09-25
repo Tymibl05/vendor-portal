@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Task } from '../components/Task';
-import { useAuth } from '../contexts/AuthContext';
 import { useTasks } from '../contexts/TasksContext';
 
 export const Portal = () => {
-  const { currentUser } = useAuth();
-  const { companyInfo } = useTasks();
-  console.log(currentUser.uid);
+  const { vendorInfo } = useTasks();
 
   const [filter, setFilter] = useState('active');
   // use filter state to call the correct task group from context.
@@ -15,9 +12,10 @@ export const Portal = () => {
   return (
     <div id="Portal">
       <div>
-        <h1>
-          Vendor Portal | <span>{companyInfo.name}</span>
-        </h1>
+        <nav>
+          <h1>{/* Vendor Portal | <span>{vendorInfo.name}</span> */}</h1>
+          <button>add task</button>
+        </nav>
 
         <div className="tasks">
           <div className="filter">
@@ -30,7 +28,7 @@ export const Portal = () => {
             <p>Description</p>
             <p>Timeframe</p>
           </div>
-          {companyInfo.tasks.map((task) => (
+          {vendorInfo.tasks.map((task) => (
             <Task task={task} key={task.id} />
           ))}
         </div>
