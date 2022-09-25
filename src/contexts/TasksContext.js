@@ -42,7 +42,8 @@ export const TasksProvider = ({ children }) => {
     await updateDoc(docRef, {
       tasks: arrayUnion(taskInfo),
     });
-  };
+    // getVendorInfo() - test to see if this is needed (or not) for the page to rerender newly added tasks
+  }; // once testing is complete, switch 'companies' to 'vendors' and 'dell' to the uid
 
   const filterTasks = () => {};
 

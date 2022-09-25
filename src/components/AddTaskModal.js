@@ -4,7 +4,7 @@ import { useTasks } from '../contexts/TasksContext';
 export const AddTaskModal = () => {
   const { addTask } = useTasks();
 
-  const [formInput, setFormInput] = useState({
+  const initForm = {
     id: 2,
     description: '',
     multiDay: false,
@@ -16,15 +16,17 @@ export const AddTaskModal = () => {
     },
     employees: [
       {
-        name: 'Joe Momma',
+        name: 'Hu Sma',
         timeIn: [],
         timeOut: [],
       },
     ],
-  });
+  };
+  const [formInput, setFormInput] = useState(initForm);
 
   const handleAddTask = (e) => {
     e.preventDefault();
+    // perform form checks (e.g. start date AFTER end date, etc.) before submitting the form to addTask()
     addTask(formInput);
   };
 
@@ -125,6 +127,9 @@ export const AddTaskModal = () => {
           </div>
           <button type="submit" onClick={handleAddTask}>
             Submit
+          </button>
+          <button type="reset" onClick={() => setFormInput(initForm)}>
+            Reset
           </button>
         </form>
       </div>
