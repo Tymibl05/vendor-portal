@@ -28,7 +28,8 @@ export const TasksProvider = ({ children }) => {
 
   const getVendorInfo = async () => {
     const vendor = await getDoc(
-      doc(collection(db, 'vendors'), `${currentUser.uid}`)
+      // doc(collection(db, 'vendors'), `${currentUser.uid}`)
+      doc(collection(db, 'companies'), 'dell') //* dev db collection
     );
     setVendorInfo(vendor.data());
   };
@@ -47,9 +48,19 @@ export const TasksProvider = ({ children }) => {
 
   const filterTasks = () => {};
 
+  const vendorCheckIn = async (taskID, name) => {
+    const docRef = doc(collection(db, 'companies'), 'dell');
+    await updateDoc(docRef, {
+      'tasks.4.id': '0000008',
+    });
+  };
+  const vendorCheckOut = async (name) => {};
+
   const value = {
     vendorInfo,
     addTask,
+    vendorCheckIn,
+    vendorCheckOut,
   };
   return (
     <TasksCotnext.Provider value={value}>

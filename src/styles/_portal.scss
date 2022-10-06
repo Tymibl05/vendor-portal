@@ -1,24 +1,44 @@
 #Portal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    padding: 1em;
+    background-color: var(--darkBlue);
+    h1 {
+      color: var(--gray);
+      span {
+        color: var(--gold);
+      }
+    }
     button {
-      height: 30px;
+      padding: 0.5em;
+      background-color: var(--darkBlue);
+      color: var(--gold);
+      border-color: var(--gray);
+      font-weight: 600;
     }
   }
-  .filter {
-    display: flex;
-    gap: 1em;
-  }
-  .labels {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2em;
+  .tasks {
+    display: grid;
+    .filter {
+      margin: 1em 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1em;
+      padding-right: 0.5em;
+      text-decoration: underline;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--gold);
+      cursor: pointer;
+    }
+    .labels {
+      margin: 0.5em 0.5em 0.5em 2em;
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray);
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
   }
 }

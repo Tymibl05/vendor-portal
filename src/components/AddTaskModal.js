@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTasks } from '../contexts/TasksContext';
 
-export const AddTaskModal = () => {
+export const AddTaskModal = ({ setModalOpen }) => {
   const { addTask } = useTasks();
 
   const initForm = {
@@ -32,7 +32,10 @@ export const AddTaskModal = () => {
 
   return (
     <div id="AddTaskModal">
-      <div>
+      <div className="card">
+        <button className="close" onClick={() => setModalOpen(false)}>
+          X
+        </button>
         <h2>Request new Task</h2>
         <form action="">
           <div>
@@ -125,12 +128,14 @@ export const AddTaskModal = () => {
               ))}
             </select> */}
           </div>
-          <button type="submit" onClick={handleAddTask}>
-            Submit
-          </button>
-          <button type="reset" onClick={() => setFormInput(initForm)}>
-            Reset
-          </button>
+          <div className="buttons">
+            <button type="submit" onClick={handleAddTask}>
+              Submit
+            </button>
+            <button type="reset" onClick={() => setFormInput(initForm)}>
+              Reset
+            </button>
+          </div>
         </form>
       </div>
     </div>

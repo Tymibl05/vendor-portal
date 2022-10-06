@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { useTasks } from '../contexts/TasksContext';
 import { Task } from '../components/Task';
+import { AddTaskModal } from '../components/AddTaskModal';
 
 export const Portal = () => {
   const { vendorInfo } = useTasks();
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const [filter, setFilter] = useState('active');
-  // use filter state to call the correct task group from context.
-  // new task group call in useEffect(()=>{},[filterState])
+  // filter tasks from vendorInfo based on 'status' field (to be added)
 
   return (
     <div id="Portal">
+      {isModalOpen && <AddTaskModal setModalOpen={setModalOpen} />}
       <div>
         <nav>
           <h1>
             Vendor Portal | <span>{vendorInfo.name}</span>
           </h1>
-          <button>add task</button>
+          <button onClick={() => setModalOpen(!isModalOpen)}>add task</button>
         </nav>
 
         <div className="tasks">
