@@ -28,6 +28,7 @@ export const AddTaskModal = ({ setModalOpen }) => {
     e.preventDefault();
     // perform form checks (e.g. start date AFTER end date, etc.) before submitting the form to addTask()
     addTask(formInput);
+    setModalOpen(false);
   };
 
   return (

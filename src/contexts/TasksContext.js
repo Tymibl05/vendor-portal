@@ -16,6 +16,8 @@ export const useTasks = () => {
 
 export const TasksProvider = ({ children }) => {
   const { currentUser } = useAuth();
+  const { uid: userId } = currentUser;
+  console.log(userId);
 
   const [vendorInfo, setVendorInfo] = useState({
     tasks: [],

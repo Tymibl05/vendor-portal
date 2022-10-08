@@ -29,7 +29,6 @@ export const Portal = () => {
           </div>
           <div className="labels">
             <p>Task</p>
-            <p>Description</p>
             <p>Timeframe</p>
           </div>
           {vendorInfo.tasks.map((task) => (

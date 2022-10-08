@@ -23,8 +23,13 @@
       border: none;
     }
     .timeframe {
-      text-align: center;
+      display: flex;
+      gap: 1em;
     }
+  }
+  .desc {
+    color: var(--gray);
+    padding-top: 1em;
   }
 
   .employees {

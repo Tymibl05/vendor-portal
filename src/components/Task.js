@@ -18,7 +18,6 @@ export const Task = ({ task }) => {
             <button>^</button>
             {`T${task.id}`}
           </p>
-          <p className="desc">{task.description}</p>
           <div className="timeframe">
             <p>{task.timeframe.startDate}</p>
             <p>
@@ -27,6 +26,7 @@ export const Task = ({ task }) => {
           </div>
         </div>
         <ul className="employees">
+          <p className="desc">{task.description}</p>
           {task.employees.map((emp) => (
             <li className="emp" key={emp.name}>
               <div className="text">
