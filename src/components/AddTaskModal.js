@@ -1,13 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { useTasks } from '../contexts/TasksContext';
 
 export const AddTaskModal = ({ setModalOpen }) => {
-  const { addTask } = useTasks();
-
+  const url = '/1/tasks';
   const initForm = {
-    id: 2,
-    description: '',
-    multiDay: false,
+    // id: uuid,
+    // status: 'pending',
+    // requested: timestamp,
+    description: 'Testing: Add new task to API from form.',
     timeframe: {
       startDate: '',
       endDate: '',
@@ -16,9 +16,9 @@ export const AddTaskModal = ({ setModalOpen }) => {
     },
     employees: [
       {
-        name: 'Hu Sma',
-        timeIn: [],
-        timeOut: [],
+        name: 'Miqael Saebel',
+        checkIn: ['0'],
+        checkOut: ['8'],
       },
     ],
   };
@@ -27,7 +27,7 @@ export const AddTaskModal = ({ setModalOpen }) => {
   const handleAddTask = (e) => {
     e.preventDefault();
     // perform form checks (e.g. start date AFTER end date, etc.) before submitting the form to addTask()
-    addTask(formInput);
+    axios.post(url, formInput);
     setModalOpen(false);
   };
 

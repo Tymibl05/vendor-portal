@@ -1,14 +1,16 @@
 import React from 'react';
 import { Toggle } from '../components/Toggle';
-import { useTasks } from '../contexts/TasksContext';
+import axios from 'axios';
 
 export const Task = ({ task }) => {
-  const { vendorCheckIn, vendorCheckOut } = useTasks();
-
-  const checkHandler = (e, action, emp) => {
+  const checkHandler = (e, action, empId) => {
     e.stopPropagation();
-    vendorCheckIn(task.id, emp.name);
-    console.log(`check ${action} ${emp.name}`);
+    const stamp = '11/11/11 11:11';
+    if (action == 'IN')
+      axios.patch(`/1/${task.id}/${empId}`, { checkIn: stamp });
+    if (action == 'OUT')
+      axios.patch(`/1/${task.id}/${empId}`, { checkOut: stamp });
+    // axios.patch('/:userId/:taskId/:empId', req.body)
   };
   return (
     <div id="Task">
@@ -32,20 +34,25 @@ export const Task = ({ task }) => {
               <div className="text">
                 <p className="name">{emp.name}</p>
                 <p className="inTime">
-                  <b>In:</b> 10/05/22 12:30
+                  <b>In:</b> {emp.checkIn[emp.checkIn.length - 1]}
                 </p>
                 <p className="outTime">
-                  <b>Out:</b> 10/05/22 15:35
+                  <b>Out:</b>{' '}
+                  {emp.checkOut.length == emp.checkIn.length
+                    ? emp.checkOut[emp.checkOut.length - 1]
+                    : ''}
                 </p>
               </div>
-              <div className="buttons">
-                <button onClick={(e) => checkHandler(e, 'IN', emp)}>
-                  Check in
-                </button>
-                <button onClick={(e) => checkHandler(e, 'OUT', emp)}>
-                  Check out
-                </button>
-              </div>
+              {task.status == 'active' && (
+                <div className="buttons">
+                  <button onClick={(e) => checkHandler(e, 'IN', emp.id)}>
+                    Check in
+                  </button>
+                  <button onClick={(e) => checkHandler(e, 'OUT', emp.id)}>
+                    Check out
+                  </button>
+                </div>
+              )}
             </li>
           ))}
         </ul>
