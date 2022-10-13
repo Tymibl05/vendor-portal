@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const AddTaskModal = ({ setModalOpen }) => {
-  const url = '/1/tasks';
+  const tasksURL = '/1/tasks';
   const initForm = {
     // id: uuid,
     // status: 'pending',
@@ -14,22 +14,28 @@ export const AddTaskModal = ({ setModalOpen }) => {
       startTime: '',
       endTime: '',
     },
-    employees: [
-      {
-        name: 'Miqael Saebel',
-        checkIn: ['0'],
-        checkOut: ['8'],
-      },
-    ],
+    employees: [],
   };
   const [formInput, setFormInput] = useState(initForm);
 
   const handleAddTask = (e) => {
     e.preventDefault();
     // perform form checks (e.g. start date AFTER end date, etc.) before submitting the form to addTask()
-    axios.post(url, formInput);
+    axios.post(tasksURL, formInput);
     setModalOpen(false);
   };
+
+  const employeesURL = '/1/employees';
+  const [userEmployees, setUserEmployees] = useState([]);
+  useEffect(() => {
+    try {
+      axios
+        .get(employeesURL)
+        .then((response) => setUserEmployees(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return (
     <div id="AddTaskModal">

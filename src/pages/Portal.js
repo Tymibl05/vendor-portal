@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Task } from '../components/Task';
 import { AddTaskModal } from '../components/AddTaskModal';
 import axios from 'axios';
-// import { useFetch } from '../hooks/useFetch';
 
 export const Portal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -20,14 +19,12 @@ export const Portal = () => {
 
   const [filter, setFilter] = useState('active');
   const [filteredTasks, setFilteredTasks] = useState();
-  // const { fetchData: filteredTasks, error } = useFetch(`/1/tasks/${filter}`);
-  // working on custom useFetch hook
   useEffect(() => {
     (async () => {
       try {
-        fetch(`/1/tasks/${filter}`)
-          .then((response) => response.json())
-          .then((data) => setFilteredTasks(data));
+        axios
+          .get(`/1/tasks/${filter}`)
+          .then((response) => setFilteredTasks(response.data));
       } catch (error) {
         console.log(error);
       }
