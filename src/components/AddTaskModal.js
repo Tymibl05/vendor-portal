@@ -37,6 +37,36 @@ export const AddTaskModal = ({ setModalOpen }) => {
     }
   }, []);
 
+  const [query, setQuery] = useState('');
+  const filteredEmps = userEmployees.filter(
+    (emp) => query !== '' && emp.name.toLowerCase().includes(query)
+  );
+  const addEmployee = (e, emp) => {
+    e.preventDefault();
+    const existingEmp = formInput.employees.find(
+      (employee) => employee.id == emp.id
+    );
+    if (!existingEmp) {
+      setFormInput({
+        ...formInput,
+        employees: [
+          ...formInput.employees,
+          {
+            id: emp.id,
+            name: emp.name,
+            checkIn: [],
+            checkOut: [],
+          },
+        ],
+      });
+    }
+  };
+  const removeEmployee = (e, empId) => {
+    e.preventDefault();
+    const newList = formInput.employees.filter((emp) => emp.id !== empId);
+    setFormInput({ ...formInput, employees: newList });
+  };
+
   return (
     <div id="AddTaskModal">
       <div className="card">
@@ -125,15 +155,38 @@ export const AddTaskModal = ({ setModalOpen }) => {
               }
             />
           </div>
-          <div>
-            <label htmlFor="">Employees</label>
-            {/* <select name="employees" id="employees">
-              {companyInfo.employees.map((emp) => (
-                <option value={emp} key={emp}>
-                  {emp}
-                </option>
-              ))}
-            </select> */}
+          <div className="employees">
+            <label htmlFor="">Employees:</label>
+            <input
+              type="text"
+              placeholder="Search for employee."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className="lists">
+              <div className="added">
+                <h3>Added:</h3>
+                {formInput.employees.map((emp) => (
+                  <div>
+                    <p>{emp.name}</p>
+                    <button
+                      key={emp.id}
+                      onClick={(e) => removeEmployee(e, emp.id)}
+                    >
+                      remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="searched">
+                {filteredEmps &&
+                  filteredEmps.map((emp) => (
+                    <button key={emp.id} onClick={(e) => addEmployee(e, emp)}>
+                      {emp.name}
+                    </button>
+                  ))}
+              </div>
+            </div>
           </div>
           <div className="buttons">
             <button type="submit" onClick={handleAddTask}>

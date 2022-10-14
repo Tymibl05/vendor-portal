@@ -41,6 +41,36 @@
         display: flex;
         gap: 1em;
       }
+      .employees {
+        display: flex;
+        flex-direction: column;
+        .lists {
+          display: flex;
+          justify-content: space-between;
+          div {
+            display: flex;
+            flex-direction: column;
+          }
+          .added {
+            h3 {
+              color: var(--gold);
+            }
+            div {
+              flex-direction: row;
+              align-items: center;
+              gap: 0.5em;
+              p {
+                color: var(--gray);
+              }
+              button {
+                padding: 0.15em;
+                background-color: var(--red);
+                color: var(--gray);
+              }
+            }
+          }
+        }
+      }
       .buttons {
         button {
           padding: 0.5em;
