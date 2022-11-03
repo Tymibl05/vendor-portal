@@ -29,7 +29,7 @@ export const Portal = () => {
         console.log(error);
       }
     })();
-  }, [filter]); // fetch filtered tasks
+  }, [isModalOpen, filteredTasks]); // fetch filtered tasks
 
   return (
     <div id="Portal">

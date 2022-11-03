@@ -72,4 +72,15 @@
       display: block;
     }
   }
+
+  @media screen and (min-width: 769px) {
+    .employees {
+      .emp {
+        flex-direction: row;
+        .text {
+          gap: 2em;
+        }
+      }
+    }
+  }
 }
