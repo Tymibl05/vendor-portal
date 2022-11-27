@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background-color: rgb(21, 24, 25);
+  color: rgb(127, 133, 139);
+  padding: 1em;
+  letter-spacing: 1px;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.15) transparent;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.15);
+  border-radius: 20px;
+  border: transparent;
+}
+a {
+  color: unset;
+  text-decoration: unset;
+}
+button {
+  cursor: pointer;
+}
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(21, 24, 25, 0.85);
+}
+@media screen and (min-width: 1000px) {
+  html {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

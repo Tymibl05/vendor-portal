@@ -1,13 +1,21 @@
 import React from 'react';
-import './styles/App.scss';
-import { SignIn } from './pages/SignIn';
-import { Portal } from './pages/Portal';
-import { useAuth } from './contexts/AuthContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Nav } from './Nav/Nav';
+import { Home } from './pages/Home/Home';
+import { Request } from './pages/Request/Request';
+import { NewReq } from './pages/NewReq/NewReq';
 
 function App() {
-  const { currentUser } = useAuth();
-
-  return <div id="App">{!currentUser ? <SignIn /> : <Portal />}</div>;
+  return (
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/request/:id" element={<Request />} />
+        <Route path="/new-request" element={<NewReq />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

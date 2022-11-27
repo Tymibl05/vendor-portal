@@ -1,0 +1,25 @@
+#Pending {
+  h2 {
+    padding: 1em;
+    border-bottom: 1px solid rgb(48, 51, 56);
+  }
+  .requests {
+    display: flex;
+    overflow-x: scroll;
+    gap: 1em;
+    padding: 1em;
+    .req {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      min-width: 30%;
+      padding: 1em;
+      border-radius: 8px;
+      background-color: rgb(38, 42, 48);
+      overflow: hidden;
+      &:hover {
+        background-color: rgb(48, 51, 56);
+      }
+    }
+  }
+}

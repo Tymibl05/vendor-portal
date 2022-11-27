@@ -1,0 +1,22 @@
+#Home {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+  #Onsite,
+  #Active,
+  #Pending {
+    background-color: rgb(32, 34, 37);
+    border-radius: 0.5em;
+    border: 1px solid rgb(48, 51, 56);
+    overflow-y: scroll;
+  }
+  .row {
+    display: flex;
+    margin-bottom: 1em;
+    gap: 1em;
+    min-height: 55vh;
+    #Active {
+      flex-grow: 5;
+    }
+  }
+}

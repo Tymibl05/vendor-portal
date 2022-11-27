@@ -1,0 +1,29 @@
+#Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .links {
+    display: flex;
+    gap: 1em;
+    a {
+      background-color: rgb(48, 51, 56);
+      border-radius: 2em;
+      padding: 4px 8px;
+    }
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    input {
+      padding: 4px;
+      border-radius: 1em;
+      border: none;
+      outline: none;
+    }
+    figure {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

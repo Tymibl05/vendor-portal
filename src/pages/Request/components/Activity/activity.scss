@@ -1,0 +1,12 @@
+#Activity {
+  header {
+    padding: 1em;
+    border-bottom: 1px solid rgb(48, 51, 56);
+  }
+  .logs {
+    padding: 1em;
+    .log {
+      margin: 0.5em 0;
+    }
+  }
+}

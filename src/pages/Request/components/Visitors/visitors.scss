@@ -1,0 +1,80 @@
+#Visitors {
+  header {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 1em;
+    border-bottom: 1px solid rgb(48, 51, 56);
+    .active {
+      display: flex;
+      align-items: center;
+      .actions {
+        button {
+          margin-right: 1em;
+          padding: 4px;
+          border-radius: 4px;
+          border: none;
+          color: rgb(1, 175, 255);
+          background-color: rgb(25, 56, 72);
+          &:hover {
+            transform: scale(1.1);
+          }
+          &:active {
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+  }
+  .cards {
+    display: flex;
+    overflow-x: scroll;
+    gap: 1em;
+    padding: 1em;
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      padding: 1em;
+      border-radius: 8px;
+      background-color: rgb(48, 51, 56);
+      &:hover {
+        background-color: rgb(38, 42, 48);
+      }
+      &.selected {
+        background-color: rgb(25, 56, 72);
+      }
+      .status {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+        .in,
+        .out {
+          padding: 0.5em;
+          border-radius: 8px;
+        }
+        .in {
+          background-color: rgb(23, 99, 61);
+          color: rgb(37, 161, 53);
+        }
+        .out {
+          background-color: rgb(143, 20, 20);
+          color: rgb(255, 0, 0);
+        }
+      }
+      .badges {
+        display: flex;
+        gap: 1em;
+        margin-top: 1em;
+        .badge {
+          text-align: center;
+          width: 2em;
+          padding: 0.5em;
+          border-radius: 50%;
+          background-color: gray;
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+#ConfirmModal {
+  padding: 1em;
+  border-radius: 8px;
+  height: fit-content;
+  align-self: center;
+  background-color: rgb(25, 56, 72);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  header {
+    button {
+      padding: 0.5em;
+      border-radius: 8px;
+      border: none;
+      background-color: rgb(143, 20, 20);
+      color: rgb(255, 0, 0);
+    }
+  }
+  .badge {
+    margin-right: 1em;
+  }
+  .actions {
+    display: flex;
+    gap: 1em;
+    button {
+      margin-top: 1em;
+      padding: 0.5em;
+      border-radius: 4px;
+      border: none;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+      &.confirm {
+        background-color: rgb(23, 99, 61);
+        color: rgb(37, 161, 53);
+      }
+      &.cancel {
+        background-color: rgb(143, 20, 20);
+        color: rgb(255, 0, 0);
+      }
+    }
+  }
+}

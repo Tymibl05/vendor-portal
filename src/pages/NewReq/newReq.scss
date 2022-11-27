@@ -1,0 +1,39 @@
+#NewReq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  form {
+    padding: 1em;
+    border-radius: 8px;
+    background-color: rgb(48, 51, 56);
+    div {
+      margin: 0.5em 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1em;
+      &.checkbox {
+        justify-content: center;
+      }
+      &.description {
+        label {
+          align-self: flex-start;
+        }
+        textarea {
+          padding: 4px;
+          border: none;
+          outline: none;
+          resize: none;
+        }
+      }
+    }
+  }
+  button {
+    padding: 0.5em;
+    border-radius: 4px;
+    border: none;
+    color: unset;
+    background-color: rgb(48, 51, 56);
+  }
+}

@@ -1,0 +1,41 @@
+#Active {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid rgb(48, 51, 56);
+    .left,
+    .filters {
+      display: flex;
+      gap: 1em;
+    }
+  }
+  .requests {
+    .request {
+      font-size: larger;
+      margin: 1em;
+      padding: 1em;
+      border-radius: 8px;
+      // background-color: rgb(21, 24, 26);
+      // background-color: rgb(38, 42, 48);
+      background-color: rgb(48, 51, 56);
+      &:hover {
+        background-color: rgb(38, 42, 48);
+      }
+      .info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+        .time {
+          display: flex;
+          gap: 1em;
+        }
+      }
+      .visitors {
+        display: flex;
+        gap: 1em;
+      }
+    }
+  }
+}
