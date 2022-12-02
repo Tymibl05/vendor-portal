@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useCompany } from '../../contexts/CompanyContext';
 import './newReq.scss';
 
 export const NewReq = () => {
+  const { urlBase } = useCompany();
   const initForm = {
     description: '',
     timeframe: {
@@ -16,9 +18,7 @@ export const NewReq = () => {
   const [multiDay, setMultiDay] = useState(false);
   const submitReq = (e) => {
     e.preventDefault();
-    // const url =
-    //   'https://visitor-kiosk-mern-server.onrender.com/visitor-kiosk/requests/new';
-    const url = 'http://localhost:5000/visitor-kiosk/requests/new';
+    const url = `${urlBase}/visitor-kiosk/requests/new`;
     try {
       fetch(url, {
         method: 'POST',

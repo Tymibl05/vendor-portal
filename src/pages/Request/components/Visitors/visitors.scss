@@ -77,4 +77,13 @@
       }
     }
   }
+  @media screen and (max-width: 769px) {
+    header {
+      justify-content: space-between;
+      .active {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+  }
 }

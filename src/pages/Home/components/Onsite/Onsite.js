@@ -15,9 +15,7 @@ export const Onsite = ({ onsite }) => {
               key={vis.user_name}
             >
               <div className="info">
-                <p>
-                  <strong>{vis.user_name}</strong>
-                </p>
+                <strong>{vis.user_name}</strong>
                 <p>{vis.company_name}</p>
               </div>
               <div className="badges">

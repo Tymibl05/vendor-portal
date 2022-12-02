@@ -8,6 +8,7 @@
     .left,
     .filters {
       display: flex;
+      align-items: center;
       gap: 1em;
     }
   }
@@ -35,6 +36,25 @@
       .visitors {
         display: flex;
         gap: 1em;
+      }
+    }
+  }
+  @media screen and (max-width: 769px) {
+    .nav {
+      .filters {
+        display: none;
+      }
+    }
+    .requests {
+      .request {
+        .info {
+          flex-direction: column;
+          gap: 0.5em;
+          .time {
+            flex-direction: column;
+            gap: 0.5em;
+          }
+        }
       }
     }
   }

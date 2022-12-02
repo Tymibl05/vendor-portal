@@ -17,6 +17,12 @@
     min-height: 55vh;
     #Active {
       flex-grow: 5;
+      max-height: 55vh;
+    }
+  }
+  @media screen and (max-width: 769px) {
+    .row {
+      flex-direction: column;
     }
   }
 }

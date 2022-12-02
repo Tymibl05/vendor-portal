@@ -9,8 +9,8 @@ export const CompanyProvider = ({ children }) => {
   const [company, setCompany] = useState();
   const [requests, setRequests] = useState();
   const [onsite, setOnsite] = useState();
-  // const urlBase = 'http://localhost:5000';
-  const urlBase = 'https://visitor-kiosk-mern-server.onrender.com';
+  const urlBase = 'http://localhost:5000';
+  // const urlBase = 'https://visitor-kiosk-mern-server.onrender.com';
 
   useEffect(() => {
     (async () => {
